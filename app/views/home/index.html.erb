@@ -1,0 +1,31 @@
+<h1>Tarea 2 de Tristan Pouliquen</h1>
+
+<h2>API routes disponibles</h2>
+
+<ul>
+	<li><b>POST</b> /instagram/tag/buscar</li>
+  <li>Parametros:
+    <ul style="list-style-type:none;">
+      <li>tag (string)</li>
+      <li>access_token (string)</li>
+    </ul>
+  </li>
+  <li>Respuesta:<br/>
+    <pre>
+      { 'metadata': {
+          'total': Integer
+        },
+        'posts':[
+          {
+            'tags': String[]
+            'username: String
+            'likes': Integer
+            'url': String
+            'caption': String
+          }
+        ],
+        'version' => String
+      }
+    </pre>
+  </li>
+</ul>
