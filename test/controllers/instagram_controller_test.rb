@@ -14,12 +14,9 @@ class InstagramControllerTest < ActionController::TestCase
   end
 
   test "should return json from instagram URL" do
-    controller = InstagramController.newclient = Instagram.client(:access_token => '2019746130.59a3f2b.86a0135240404ed5b908a14c0a2d9402')
+    client = Instagram.client(:access_token => '2019746130.59a3f2b.86a0135240404ed5b908a14c0a2d9402')
     response = client.tag_recent_media('pugdog')
-    result = format(response)
-
-    result_data = {"meta"=> {"code"=> 200}, "data"=> {"media_count"=> 0, "name"=> "pugdog"}}
-    assert_equal(result_data, response)
+    assert_equal (Array, response.class)
   end
 
   
