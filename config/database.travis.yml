@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: 5
+  host: localhost
+  username: postgres
+  password: postgres
+
+development:
+  <<: *default
+  database: t2development
+test:
+  <<: *default
+  database: t2test
+
+production:
+  <<: *default
+  database: t2production
+  username: t2
+  password: <%= ENV['T2_DATABASE_PASSWORD'] %>

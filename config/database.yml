@@ -6,20 +6,21 @@
 #
 default: &default
   adapter: postgresql
+  encoding: unicode
   pool: 5
-  timeout: 5000
+  host: localhost
 
 development:
   <<: *default
-  database: db/development
+  database: t2development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test
+  database: t2test
 
 production:
   <<: *default
-  database: db/production
+  database: t2production
