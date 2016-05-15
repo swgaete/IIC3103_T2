@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'instagram'
 
 class InstagramControllerTest < ActionController::TestCase
 
@@ -12,21 +13,14 @@ class InstagramControllerTest < ActionController::TestCase
     assert_response :bad_request
   end
 
-  test "should return empty JSON if get fails" do
-    controller = HomeController.new
-    uri = "http://www.google.com"
-    access_token = ''
-
-    assert_equal({}, controller.get(uri, access_token))
-  end
-
   test "should return json from instagram URL" do
-    controller = HomeController.new
-    uri = 'https://api.instagram.com/v1/tags/pugdog'
-    access_token = "2019746130.59a3f2b.86a0135240404ed5b908a14c0a2d9402"
+    controller = InstagramController.new
+    client = Instagram.client(:access_token => access_token)
+    response = client.tag_recent_media(tag)
+    result = format(response)
 
-    result_data = {"meta"=> {"code"=> 200}, "data"=> {"media_count"=> 0, "name"=> "fsdgsdfdssd"}}
-    assert_equal(result_data, controller.get(uri, access_token))
+    result_data = {"meta"=> {"code"=> 200}, "data"=> {"media_count"=> 0, "name"=> "pugdog"}}
+    assert_equal(result_data, response)
   end
 
   
