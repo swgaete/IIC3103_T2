@@ -9,8 +9,6 @@ default: &default
   encoding: unicode
   pool: 5
   host: localhost
-  username: famaranon
-  password: clavefamaranon
 
 development:
   <<: *default
